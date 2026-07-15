@@ -38,5 +38,7 @@ search.addEventListener('input', render); clear.addEventListener('click', () => 
 const menuButton = document.querySelector('.menu-button'); const mobileMenu = document.querySelector('#mobile-menu');
 menuButton.addEventListener('click', () => { const open = menuButton.getAttribute('aria-expanded') === 'true'; menuButton.setAttribute('aria-expanded', String(!open)); mobileMenu.hidden = open; menuButton.innerHTML = `<i data-lucide="${open ? 'menu' : 'x'}"></i>`; window.lucide.createIcons(); });
 mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { mobileMenu.hidden = true; menuButton.setAttribute('aria-expanded', 'false'); menuButton.innerHTML = '<i data-lucide="menu"></i>'; window.lucide.createIcons(); }));
+const signupForm = document.querySelector('#signup-form');
+signupForm.addEventListener('submit', (event) => { event.preventDefault(); document.querySelector('#signup-message').textContent = 'Thanks. You are on the list.'; signupForm.reset(); });
 document.querySelector('#year').textContent = new Date().getFullYear();
 window.lucide.createIcons(); render();
